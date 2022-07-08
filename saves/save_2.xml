@@ -1,0 +1,16 @@
+<data>
+    <maps>
+        <curent_map>map/lvl_1.tmx</curent_map>
+        <map_entry>1</map_entry>
+        <spawn_map>map/lvl_1.tmx</spawn_map>
+        <spawn_point>1</spawn_point>
+    </maps>
+    <HP>
+        <HP>500</HP>
+        <Max_HP>200</Max_HP>
+    </HP>
+    <power>
+        <jump>0</jump>
+        <wall_slide>0</wall_slide>;
+    </power>
+</data>
