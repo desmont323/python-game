@@ -99,7 +99,7 @@ class projectile(pg.sprite.Sprite):
 
 
 class collectible(pg.sprite.Sprite):
-    def __init__(self, game, x, y, w, h):
+    def __init__(self, game, x, y, w, h, name):
         self.groups = game.collectibles, game.sprites
         self.game = game
         pg.sprite.Sprite.__init__(self, self.groups)
@@ -109,18 +109,20 @@ class collectible(pg.sprite.Sprite):
         self.y = y
         self.rect.x = x
         self.rect.y = y
+        self.powername = name
         self.load_img(w, h)
         self.image = self.idle[0]
-        self.powername = "a"
 
     def load_img(self, w, h):
-        self.idle = [self.game.idle.get_image(250, 0, w, h)]
+        if self.powername == "DoubleJump":
+            self.idle = [self.game.ICON.get_image(240, 48, w, h)]
+        elif self.powername == "WallSlide":
+            self.idle = [self.game.ICON.get_image(176, 160, w, h)]
+        else:
+            self.idle = [self.game.idle.get_image(250, 0, w, h)]
+
         for frame in self.idle:
-            frame.set_colorkey(White)
-        self.idle_l = []
-        for frame in self.idle:
-            frame.set_colorkey(White)
-            self.idle_l.append(pg.transform.flip(frame, True, False))
+            frame.set_colorkey(Black)
 
     def update(self):
         pass

@@ -40,6 +40,7 @@ class Game:
         self.slime = SpriteSheet(path.join(self.game_folder, 'sprites/slime.png'))
         self.GUI = SpriteSheet(path.join(self.game_folder, 'sprites/GUI_2x_sliced.png'))
         self.buttonimg = SpriteSheet(path.join(self.game_folder, 'sprites/buttons_2x.png'))
+        self.ICON = SpriteSheet(path.join(self.game_folder, 'sprites/icon.png'))
         #
         self.bg = pg.image.load(path.join(self.game_folder, 'img/bg.png'))
         self.bg = pg.transform.scale(self.bg, Size)
@@ -91,11 +92,13 @@ class Game:
             if tile_object.name == 'collectible':
                 if tile_object.properties['power'] == 'DoubleJump':
                     if s.load(s.DoubleJump) == 0:
-                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
+                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height,
+                                                tile_object.properties['power'])
                         self.obj1.powername = tile_object.properties['power']
                 if tile_object.properties['power'] == 'WallSlide':
                     if s.load(s.WallSlide) == 0:
-                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
+                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height,
+                                                tile_object.properties['power'])
                         self.obj1.powername = tile_object.properties['power']
         # start loop
         if not self.playing:
@@ -132,6 +135,10 @@ class Game:
                 # debug
                 if event.key == pg.K_h:
                     self.draw_debug = not self.draw_debug
+                if event.key == pg.K_ESCAPE:
+                    self.playing = False
+                    self.running = False
+                    m.running = False
                 if event.key == pg.K_1:
                     self.jumper.sword_out = not self.jumper.sword_out
                     self.jumper.bow_out = False
