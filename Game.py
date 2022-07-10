@@ -1,4 +1,5 @@
 from Player import *
+from slime import *
 from menu import *
 from tiledmap import *
 from Utilities import *
@@ -78,12 +79,15 @@ class Game:
         self.teleport = pg.sprite.Group()
         self.attack_rect = pg.sprite.Group()
         self.collectibles = pg.sprite.Group()
+        self.enemy = pg.sprite.Group()
         # camera
         self.camera = Camera(self.map.width, self.map.height)
         # make object
         for tile_object in self.map.tmxdata.objects:
             if tile_object.name == 'wall':
                 block(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
+            if tile_object.name == 'slime':
+                Slime(self, tile_object.x, tile_object.y)
             if tile_object.name == 'spawn':
                 self.jumper = Player(self, tile_object.x, tile_object.y)
             if tile_object.name == 'teleport':
@@ -198,6 +202,8 @@ class Game:
                 pg.draw.rect(self.zoom, Blue, self.camera.apply_rect(teleport.rect), 1)
             for attack in self.attack_rect:
                 pg.draw.rect(self.zoom, Red, self.camera.apply_rect(attack.rect), 1)
+            for enemy in self.enemy:
+                pg.draw.rect(self.zoom, Blue, self.camera.apply_rect(enemy.front_rect))
         # draw player hp
         draw_player_health(self.zoom, 10, 10, self.jumper.health / self.jumper.MaxHealth, self.jumper.MaxHealth, self)
         # refresh the screen
@@ -228,6 +234,7 @@ class Game:
         self.player = pg.sprite.Group()
         self.teleport = pg.sprite.Group()
         self.attack_rect = pg.sprite.Group()
+        self.enemy = pg.sprite.Group()
         # camera
         self.camera = Camera(self.map.width, self.map.height)
         # make object

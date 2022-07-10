@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8899ac3c-aa5d-4760-bb30-76a3c2793607" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/sprites/icon.png" afterDir="false" />
+    <list default="true" id="8899ac3c-aa5d-4760-bb30-76a3c2793607" name="Changes" comment="add icon on power up and escape close the game TODO make escape menu">
+      <change afterPath="$PROJECT_DIR$/slime.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collide.py" beforeDir="false" afterPath="$PROJECT_DIR$/Collide.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/lvl_1.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/map/lvl_1.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saves/base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/saves/base.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saves/save_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/saves/save_2.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,20 +52,21 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="24bnTaQL33EuWNbg6vx6bm00IyZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "last_opened_file_path": "C:/desktop/game test/New folder/Jumper test"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="Boot" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="game1" />
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657300739489</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add icon on power up and escape close the game TODO make escape menu">
+      <created>1657470903188</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657470903188</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,8 +128,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="add icon on power up and escape close the game TODO make escape menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="add icon on power up and escape close the game TODO make escape menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
