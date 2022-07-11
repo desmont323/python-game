@@ -11,6 +11,7 @@ if m.playing:
     from Game import Game
 
     g = Game()
+    screen = (m.screen.get_width(), m.screen.get_height())
     while g.running:
-        g.New()
+        g.New(screen)
 pg.quit()

@@ -1,11 +1,19 @@
+import pygame.joystick
+
+import item
 from Player import *
 from slime import *
 from menu import *
 from tiledmap import *
 from Utilities import *
+from pygame.locals import *
 
 m = Menu()
 vec = pg.math.Vector2
+pygame.joystick.init()
+joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+for joystick in joysticks:
+    joystick.init()
 
 
 class Game:
@@ -19,7 +27,7 @@ class Game:
         self.save = ""
         pg.init()
         pg.mixer.init()
-        self.screen = m.screen
+        self.screen = pg.display.set_mode(Size, RESIZABLE)
         self.zoom = self.screen.copy()
         # pg.display.set_caption(Title)
         self.clock = pg.time.Clock()
@@ -29,6 +37,10 @@ class Game:
         self.playing = False
         self.inv = False
         self.pause = False
+
+    def set_screen(self, size):
+        pass
+        # self.screen = pg.display.set_mode((1920,1080), FULLSCREEN)
 
     def Load_data(self):
         self.game_folder = path.dirname(__file__)
@@ -70,7 +82,7 @@ class Game:
         for frame in self.GUIButton:
             frame.set_colorkey(Black)
 
-    def New(self):
+    def New(self, screen):
         # group
         self.projectile = pg.sprite.Group()
         self.sprites = pg.sprite.Group()
@@ -106,6 +118,7 @@ class Game:
                                                 tile_object.properties['power'])
                         self.obj1.powername = tile_object.properties['power']
         # start loop
+        self.set_screen(screen)
         if not self.playing:
             self.Loop()
 
