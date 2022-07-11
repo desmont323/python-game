@@ -1,5 +1,5 @@
-import pygame as pg
 from Setting import *
+
 pg.font.init()
 
 
@@ -14,7 +14,7 @@ class Button:
         self.game = game
 
     def draw(self, win, fontsize):
-        #pg.draw.rect(win, self.color, (self.x, self.y, self.width, self.height))
+        # pg.draw.rect(win, self.color, (self.x, self.y, self.width, self.height))
         self.width = int(self.width)
         self.height = int(self.height)
         stretchedbutton = pg.transform.scale(self.game.GUIButton[0], (self.width, self.height))
@@ -43,7 +43,6 @@ def Draw_text(screen, text, size, color, x, y):
 
 
 def draw_player_health(surf, x, y, pct, maxhp, game):
-
     if pct < 0:
         pct = 0
     BAR_LENGTH = maxhp * 0.5

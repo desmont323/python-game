@@ -4,6 +4,7 @@ import pygame as pg
 
 from tiledmap import TiledMap
 from SaveManager import *
+
 s = save()
 
 
@@ -45,15 +46,15 @@ def CollideWall(sprite, group, dir):
 def Collide_teleport(sprite, game, group):
     hits = pg.sprite.spritecollide(sprite, group, False, collide_hit_rect)
     if hits:
-            teleport = pg.sprite.spritecollide(sprite, group, False)
-            tp1 = teleport[0]
-            sprite.entry = tp1.entry
-            location = tp1.map
-            game.map = TiledMap(path.join(game.game_folder, location))
-            game.map_img = game.map.make_map()
-            game.map_rect = game.map_img.get_rect()
-            game.reload()
-            return True
+        teleport = pg.sprite.spritecollide(sprite, group, False)
+        tp1 = teleport[0]
+        sprite.entry = tp1.entry
+        location = tp1.map
+        game.map = TiledMap(path.join(game.game_folder, location))
+        game.map_img = game.map.make_map()
+        game.map_rect = game.map_img.get_rect()
+        game.reload()
+        return True
 
 
 def power(sprite, game, group):

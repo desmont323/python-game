@@ -109,12 +109,14 @@ class Game:
             if tile_object.name == 'collectible':
                 if tile_object.properties['power'] == 'DoubleJump':
                     if s.load(s.DoubleJump) == 0:
-                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height,
+                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width,
+                                                tile_object.height,
                                                 tile_object.properties['power'])
                         self.obj1.powername = tile_object.properties['power']
                 if tile_object.properties['power'] == 'WallSlide':
                     if s.load(s.WallSlide) == 0:
-                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height,
+                        self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width,
+                                                tile_object.height,
                                                 tile_object.properties['power'])
                         self.obj1.powername = tile_object.properties['power']
         # start loop
@@ -177,8 +179,6 @@ class Game:
                     self.jumper.heal(heal)
                 if event.key == pg.K_x:
                     self.jumper.canTakeDamage = not self.jumper.canTakeDamage
-                if event.key == pg.K_p:
-                    self.set_screen()
                 if event.key == pg.K_e:
                     if self.jumper.sword_out:
                         self.jumper.Attack(self, 'sword')
@@ -345,19 +345,21 @@ class Game:
             stretchedinv6 = pg.transform.scale(self.GUImenu[5], (int(inventoryWidth / 3), int(inventoryHeight / 3)))
             stretchedinv7 = pg.transform.scale(self.GUImenu[6], (int(inventoryWidth / 3), int(inventoryHeight / 3)))
             stretchedinv8 = pg.transform.scale(self.GUImenu[7], (int(inventoryWidth / 3), int(inventoryHeight / 3)))
-            stretchedinv9 = pg.transform.scale(self.GUImenu[8], (int(inventoryWidth)-2, int(inventoryHeight)-2))
+            stretchedinv9 = pg.transform.scale(self.GUImenu[8], (int(inventoryWidth) - 2, int(inventoryHeight) - 2))
             self.screen.blit(stretchedinv9, (inventoryx, inventoryy))
             self.screen.blit(stretchedinv1, (inventoryx, inventoryy))
-            self.screen.blit(stretchedinv2, (int(inventoryx + (inventoryWidth/3)) -1, inventoryy))
-            self.screen.blit(stretchedinv3, (int(inventoryx + 2*(inventoryWidth / 3)) - 1, inventoryy))
+            self.screen.blit(stretchedinv2, (int(inventoryx + (inventoryWidth / 3)) - 1, inventoryy))
+            self.screen.blit(stretchedinv3, (int(inventoryx + 2 * (inventoryWidth / 3)) - 1, inventoryy))
             self.screen.blit(stretchedinv4, (int(inventoryx), inventoryy + (inventoryHeight / 3)))
-            self.screen.blit(stretchedinv5, (int(inventoryx + 2*(inventoryWidth / 3)) - 1, inventoryy + (inventoryHeight / 3)))
-            self.screen.blit(stretchedinv6, (int(inventoryx), inventoryy + 2*(inventoryHeight / 3) - 1))
-            self.screen.blit(stretchedinv7, (int(inventoryx + (inventoryWidth / 3)) - 1, inventoryy + 2*(inventoryHeight / 3) - 1))
-            self.screen.blit(stretchedinv8, (int(inventoryx + 2*(inventoryWidth / 3)) - 1, inventoryy + 2 * (inventoryHeight / 3) - 1))
-
-            Draw_text(self.screen, "HP : " + str(int(self.jumper.health)) + "/" + str(int(self.jumper.MaxHealth))
-                      , int(buttonFont), Yellow, (inventoryx * 2.4), (inventoryy * 2))
+            self.screen.blit(stretchedinv5,
+                             (int(inventoryx + 2 * (inventoryWidth / 3)) - 1, inventoryy + (inventoryHeight / 3)))
+            self.screen.blit(stretchedinv6, (int(inventoryx), inventoryy + 2 * (inventoryHeight / 3) - 1))
+            self.screen.blit(stretchedinv7,
+                             (int(inventoryx + (inventoryWidth / 3)) - 1, inventoryy + 2 * (inventoryHeight / 3) - 1))
+            self.screen.blit(stretchedinv8, (
+                int(inventoryx + 2 * (inventoryWidth / 3)) - 1, inventoryy + 2 * (inventoryHeight / 3) - 1))
+            Draw_text(self.screen, "HP : " + str(int(self.jumper.health)) + "/" + str(int(self.jumper.MaxHealth)),
+                      int(buttonFont), Yellow, (inventoryx * 2.4), (inventoryy * 2))
             for event in pg.event.get():
                 if event.type == pg.MOUSEBUTTONDOWN:
                     pos = pg.mouse.get_pos()

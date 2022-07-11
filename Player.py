@@ -399,7 +399,7 @@ class Player(pg.sprite.Sprite):
                 self.LookDown = True
             for event in pg.event.get():
                 if event.type == JOYAXISMOTION:
-                    pass # TODO find how to make controller work
+                    pass  # TODO find how to make controller work
 
     def get_status(self):
         # idle
