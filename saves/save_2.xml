@@ -10,7 +10,7 @@
         <Max_HP>200</Max_HP>
     </HP>
     <power>
-        <jump>o</jump>
+        <jump>0</jump>
         <wall_slide>0</wall_slide>;
     </power>
 </data>

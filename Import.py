@@ -1,5 +1,6 @@
 import pygame as pg
 
+
 class SpriteSheet:
     def __init__(self, filename):
         self.spriteSheet = pg.image.load(filename).convert()

@@ -41,6 +41,9 @@ class Player(pg.sprite.Sprite):
         self.walking = False
         self.jumping = False
         self.falling = False
+        self.iframe = True
+        self.iframeStart = 0
+        self.canTakeDamage = False
         #
         self.sword_out = False
         self.bow_out = False
@@ -385,13 +388,18 @@ class Player(pg.sprite.Sprite):
         #
         if not self.game.pause:
             if keys[pg.K_a]:
+                self.FaceLeft = True
                 self.acc.x = -Player_acc
             if keys[pg.K_d]:
+                self.FaceLeft = False
                 self.acc.x = Player_acc
             if keys[pg.K_w]:
                 self.LookUp = True
             if keys[pg.K_s]:
                 self.LookDown = True
+            for event in pg.event.get():
+                if event.type == JOYAXISMOTION:
+                    pass # TODO find how to make controller work
 
     def get_status(self):
         # idle
@@ -400,21 +408,27 @@ class Player(pg.sprite.Sprite):
         else:
             self.Idle = False
         # direction
-        if self.acc.x >= 0.3 or self.vel.x >= 1:
-            self.FaceLeft = False
-        if self.acc.x <= -0.3 or self.vel.x <= -1:
-            self.FaceLeft = True
+        if not self.iframe:
+            if self.acc.x >= 0.3 or self.vel.x >= 1:
+                self.FaceLeft = False
+            if self.acc.x <= -0.3 or self.vel.x <= -1:
+                self.FaceLeft = True
         # lookup/down
         keys = pg.key.get_pressed()
         if not keys[pg.K_w]:
             self.LookUp = False
         if not keys[pg.K_s]:
             self.LookDown = False
+        if self.iframe:
+            now = pg.time.get_ticks()
+            if now - self.iframeStart >= 1300:
+                self.iframe = False
 
     def update(self):
         self.get_status()
         self.get_keys()
         self.draw()
+        self.get_hit()
         #
         self.acc.x += self.vel.x * Player_friction
         #
@@ -471,10 +485,33 @@ class Player(pg.sprite.Sprite):
                     self.rect.bottom = bottom
         else:
             pass
+        if self.iframe:
+            if (self.current_frame % 2) == 0:
+                iframe = self.game.idle.get_image(413, 0, 37, 50)
+                iframe.set_colorkey(Black)
+                self.image = iframe
 
-    def TakeDamage(self, damage):
-        self.health += damage
-        self.Save(self.s.HP, int(self.health))
+    def get_hit(self):
+        enemy = pg.sprite.spritecollide(self, self.game.enemy, False, collide_hit_rect)
+        if enemy:
+            self.TakeDamage(enemy[0])
+
+    def TakeDamage(self, source):
+        if not self.iframe and self.canTakeDamage:
+            hp = self.health
+            self.health -= source.damage
+            kb = source.kb
+            if source.x > self.x:
+                self.vel.x = -kb
+            else:
+                self.vel.x = kb
+            self.Save(self.s.HP, int(self.health))
+            if self.health < hp:
+                self.iframe = True
+                self.iframeStart = pg.time.get_ticks()
+
+    def heal(self, source):
+        self.health += source.damage
 
     def Attack(self, game, type):
         if type == 'sword':
@@ -525,4 +562,3 @@ class Player(pg.sprite.Sprite):
                 self.FaceLeft = not self.FaceLeft
                 self.Double_Jump = True
                 self.vel.y = -Player_jump
-

@@ -27,6 +27,8 @@ class Slime(pg.sprite.Sprite):
         self.Slime_friction = -0.6
         self.Slime_grav = 0.9
         self.Slime_speed = 0.3
+        self.kb = 5
+        self.damage = 10
 
         self.Wall_Collide = False
         self.FaceLeft = True
@@ -62,7 +64,6 @@ class Slime(pg.sprite.Sprite):
             self.last_update = 0
         self.animate()
         self.getStatue()
-        # TODO self.attack()
         self.acc = vec(0, self.Slime_grav)
         if self.FaceLeft:
             self.acc.x = -self.Slime_speed

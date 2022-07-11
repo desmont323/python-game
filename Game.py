@@ -80,6 +80,7 @@ class Game:
         self.attack_rect = pg.sprite.Group()
         self.collectibles = pg.sprite.Group()
         self.enemy = pg.sprite.Group()
+        self.item = pg.sprite.Group()
         # camera
         self.camera = Camera(self.map.width, self.map.height)
         # make object
@@ -156,9 +157,15 @@ class Game:
                     self.jumper.sword_out = False
                     self.jumper.bow_out = False
                 if event.key == pg.K_q:
-                    self.jumper.TakeDamage(-10)
+                    damage = item.Damage(self)
+                    self.jumper.TakeDamage(damage)
                 if event.key == pg.K_z:
-                    self.jumper.TakeDamage(10)
+                    heal = item.Heal(self)
+                    self.jumper.heal(heal)
+                if event.key == pg.K_x:
+                    self.jumper.canTakeDamage = not self.jumper.canTakeDamage
+                if event.key == pg.K_p:
+                    self.set_screen()
                 if event.key == pg.K_e:
                     if self.jumper.sword_out:
                         self.jumper.Attack(self, 'sword')
@@ -180,6 +187,45 @@ class Game:
                         self.inv = False
                 if event.key == pg.K_SPACE:
                     self.jumper.JUMP()
+            if event.type == JOYBUTTONDOWN:
+                # print(event.button)
+                if event.button == 0:
+                    self.jumper.JUMP()
+                if event.button == 1:
+                    pass
+                if event.button == 2:
+                    if self.jumper.sword_out:
+                        self.jumper.Attack(self, 'sword')
+                    if self.jumper.bow_out:
+                        self.jumper.Attack(self, 'bow')
+                    if self.jumper.magic_out:
+                        self.jumper.Attack(self, 'magic')
+                    else:
+                        pass
+                if event.button == 3:
+                    pass
+                if event.button == 4:
+                    pass
+                if event.button == 5:
+                    pass
+                if event.button == 6:
+                    pass
+                if event.button == 7:
+                    pass
+            if event.type == JOYHATMOTION:
+                # print(event.value)
+                if event.value == (-1, 0):
+                    self.jumper.sword_out = not self.jumper.sword_out
+                    self.jumper.bow_out = False
+                    self.jumper.magic_out = False
+                if event.value == (0, 1):
+                    self.jumper.bow_out = not self.jumper.bow_out
+                    self.jumper.sword_out = False
+                    self.jumper.magic_out = False
+                if event.value == (1, 0):
+                    self.jumper.magic_out = not self.jumper.magic_out
+                    self.jumper.sword_out = False
+                    self.jumper.bow_out = False
 
     def Draw(self):
         # make screen
@@ -256,12 +302,12 @@ class Game:
                 if tile_object.properties['power'] == 'DoubleJump':
                     if s.load(s.DoubleJump) == 0:
                         self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width,
-                                                tile_object.height)
+                                                tile_object.height, tile_object.properties['power'])
                         self.obj1.powername = tile_object.properties['power']
                 if tile_object.properties['power'] == 'WallSlide':
                     if s.load(s.WallSlide) == 0:
                         self.obj1 = collectible(self, tile_object.x, tile_object.y, tile_object.width,
-                                                tile_object.height)
+                                                tile_object.height, tile_object.properties['power'])
                         self.obj1.powername = tile_object.properties['power']
 
     def Pause(self):
