@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8899ac3c-aa5d-4760-bb30-76a3c2793607" name="Changes" comment="add slime attack player take damage kb and Iframe + start of controller support">
+    <list default="true" id="8899ac3c-aa5d-4760-bb30-76a3c2793607" name="Changes" comment="reformatting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collide.py" beforeDir="false" afterPath="$PROJECT_DIR$/Collide.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saves/base.xml" beforeDir="false" afterPath="$PROJECT_DIR$/saves/base.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +45,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="24bnTaQL33EuWNbg6vx6bm00IyZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -134,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657499289659</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="reformatting">
+      <created>1657502346945</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657502346945</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,7 +148,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/slime" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -154,7 +172,8 @@
     <MESSAGE value="add icon on power up and escape close the game TODO make escape menu" />
     <MESSAGE value="add slime v1" />
     <MESSAGE value="add slime attack player take damage kb and Iframe + start of controller support" />
-    <option name="LAST_COMMIT_MESSAGE" value="add slime attack player take damage kb and Iframe + start of controller support" />
+    <MESSAGE value="reformatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformatting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
