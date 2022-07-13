@@ -88,3 +88,13 @@ def Collide(sprite, group):
         return True
     else:
         return False
+
+
+def CollideAttack(sprite, group, damage):
+    hits = pg.sprite.spritecollide(sprite, group, False, collide_hit_rect)
+    if hits:
+        enemy = pg.sprite.spritecollide(sprite, group, False)
+        enemy[-1].takeDamage(damage)
+        return True
+    else:
+        return False

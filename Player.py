@@ -43,9 +43,10 @@ class Player(pg.sprite.Sprite):
         self.falling = False
         self.iframe = True
         self.iframeStart = 0
-        self.canTakeDamage = False
+        self.canTakeDamage = True
         #
         self.sword_out = False
+        self.swordDamage = 20
         self.bow_out = False
         self.magic_out = False
         #
@@ -524,6 +525,9 @@ class Player(pg.sprite.Sprite):
                 attack_rect(game, self.x - 10, self.y - 10, 20, 31)
             if self.LookDown:
                 attack_rect(game, self.x - 10, self.y + 10, 20, 31)
+            for rect in self.game.attack_rect:
+                if CollideAttack(rect, self.game.enemy, self.swordDamage):
+                    pass
         if type == 'bow':
             if self.FaceLeft:
                 projectile(game, self.x - 32, self.y, 20, 10, -5)

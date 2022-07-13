@@ -29,6 +29,7 @@ class Slime(pg.sprite.Sprite):
         self.Slime_speed = 0.3
         self.kb = 5
         self.damage = 10
+        self.health = 100
 
         self.Wall_Collide = False
         self.FaceLeft = True
@@ -102,6 +103,11 @@ class Slime(pg.sprite.Sprite):
         else:
             self.idle = False
             self.walking = True
+
+    def takeDamage(self, damage):
+        self.health -= damage
+        if self.health <= 0:
+            self.kill()
 
     def animate(self):
         now = pg.time.get_ticks()
